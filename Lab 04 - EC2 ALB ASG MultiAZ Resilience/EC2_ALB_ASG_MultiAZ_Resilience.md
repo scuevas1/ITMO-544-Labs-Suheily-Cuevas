@@ -31,6 +31,6 @@ https://github.com/scuevas1/cloud-computing-suheily/blob/main/testing/chaos_test
 
 
 ## delete_app_stack.sh output
-![delete_app_stack.sh output](./screenshots/delete-app-stack.pngg)
+![delete_app_stack.sh output](./screenshots/delete-app-stack.png)
 
 
