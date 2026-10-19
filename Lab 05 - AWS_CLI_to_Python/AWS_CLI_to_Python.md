@@ -27,4 +27,6 @@
 ## python delete_stack.py output #2 (no errors)
 ![python delete_stack.py output #2](./screenshots/python_delete_stack_ss2.png)
 
+## what moto proved, what it could not, and which tests cover the gap
 
+Moto proved that the Python code was working correctly by testing how it created and deleted AWS resources without actually using AWS. One thing that I found useful was being able to test my code many times without worrying about creating any extra resources or instances. Something that Moto couldn't do was check if the load balancer was actually connecting to the EC2 instances correctly. Because of this, I had to run the integration test called test_every_target_becomes_healthy to make sure both the uploader and viewer instances were healthy and able to receive requests though the load balancer.
