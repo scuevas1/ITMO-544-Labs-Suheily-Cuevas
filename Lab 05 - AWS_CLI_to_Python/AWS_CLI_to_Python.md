@@ -1,4 +1,4 @@
-# EC2 S3 TwoTier FileUpload Display
+# AWS CLI to Python
 
 ## ls -a lab05 output 
 ![ls -a lab05 output](./screenshots/ls_-a_lab05_output.png)
