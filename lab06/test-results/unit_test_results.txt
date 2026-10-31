@@ -1,0 +1,38 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /cloud-computing-suheily/lab05/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /cloud-computing-suheily/lab06
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 42 items / 14 deselected / 28 selected
+
+tests/unit/test_config.py::test_load_dotenv_skips_comments_and_blank_lines PASSED [  3%]
+tests/unit/test_config.py::test_missing_keys_are_named_in_the_error PASSED [  7%]
+tests/unit/test_config.py::test_tiers_are_built_from_prefixed_keys PASSED [ 10%]
+tests/unit/test_config.py::test_ports_are_integers PASSED                [ 14%]
+tests/unit/test_database_lab06.py::test_database_configuration PASSED    [ 17%]
+tests/unit/test_database_lab06.py::test_database_security_group PASSED   [ 21%]
+tests/unit/test_database_lab06.py::test_database_create_delete PASSED    [ 25%]
+tests/unit/test_database_lab06.py::test_database_create_twice PASSED     [ 28%]
+tests/unit/test_database_lab06.py::test_database_delete_twice PASSED     [ 32%]
+tests/unit/test_policies.py::test_trust_policy_only_trusts_ec2 PASSED    [ 35%]
+tests/unit/test_policies.py::test_uploader_can_only_put_one_object PASSED [ 39%]
+tests/unit/test_policies.py::test_viewer_can_read_but_never_write PASSED [ 42%]
+tests/unit/test_policies.py::test_no_policy_uses_a_wildcard_resource PASSED [ 46%]
+tests/unit/test_stack_with_moto.py::test_create_builds_every_resource PASSED [ 50%]
+tests/unit/test_stack_with_moto.py::test_app_security_group_only_accepts_the_alb PASSED [ 53%]
+tests/unit/test_stack_with_moto.py::test_create_twice_does_not_duplicate_anything PASSED [ 57%]
+tests/unit/test_stack_with_moto.py::test_delete_removes_everything_and_restores_the_app_sg PASSED [ 60%]
+tests/unit/test_stack_with_moto.py::test_delete_is_safe_to_run_twice PASSED [ 64%]
+tests/unit/test_stack_with_moto.py::test_keep_foundation_leaves_bucket_roles_and_templates PASSED [ 67%]
+tests/unit/test_stack_with_moto.py::test_delete_detaches_extra_managed_policies PASSED [ 71%]
+tests/unit/test_user_data.py::test_app_files_are_embedded_and_round_trip PASSED [ 75%]
+tests/unit/test_user_data.py::test_service_gets_the_right_environment PASSED [ 78%]
+tests/unit/test_user_data.py::test_script_starts_with_a_shebang PASSED   [ 82%]
+tests/unit/test_user_data.py::test_launch_template_user_data_is_base64_of_the_script PASSED [ 85%]
+tests/unit/test_weather_stack_lab06.py::test_each_role_can_read_only_its_own_secret PASSED [ 89%]
+tests/unit/test_weather_stack_lab06.py::test_alb_first_and_correct_user_data PASSED [ 92%]
+tests/unit/test_weather_stack_lab06.py::test_both_user_data_scripts_are_under_16_kb PASSED [ 96%]
+tests/unit/test_weather_stack_lab06.py::test_creating_weather_stack_twice_has_no_duplicate_resources PASSED [100%]
+
+====================== 28 passed, 14 deselected in 37.14s ======================

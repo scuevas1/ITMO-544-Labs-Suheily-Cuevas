@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /cloud-computing-suheily/lab05/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /cloud-computing-suheily/lab06
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 42 items / 30 deselected / 12 selected
+
+tests/integration/test_application.py::test_weather_miss_then_hit PASSED [  8%]
+tests/integration/test_application.py::test_advisor_returns_advice PASSED [ 16%]
+tests/integration/test_application.py::test_weather_history PASSED       [ 25%]
+tests/integration/test_application.py::test_weather_invalid_zip PASSED   [ 33%]
+tests/integration/test_application.py::test_weather_unknown_zip PASSED   [ 41%]
+tests/integration/test_application.py::test_advisor_invalid_zip PASSED   [ 50%]
+tests/integration/test_infrastructure.py::test_both_target_groups_are_healthy PASSED [ 58%]
+tests/integration/test_infrastructure.py::test_apps_are_reachable_through_alb PASSED [ 66%]
+tests/integration/test_infrastructure.py::test_app_security_group_allows_only_alb PASSED [ 75%]
+tests/integration/test_infrastructure.py::test_weather_instance_not_directly_reachable PASSED [ 83%]
+tests/integration/test_infrastructure.py::test_database_port_not_publicly_reachable PASSED [ 91%]
+tests/integration/test_infrastructure.py::test_iam_roles_have_separate_secret_permissions PASSED [100%]
+
+====================== 12 passed, 30 deselected in 15.95s ======================
