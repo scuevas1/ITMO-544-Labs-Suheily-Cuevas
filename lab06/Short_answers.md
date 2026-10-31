@@ -1,5 +1,13 @@
 # Lab 06 - Short Answers
 
+## What moto could not prove for me in this lab
+
+Moto could not prove that AWS actually deleted all the database backups and snapshots after I removed the RDS instance. Moto could  check that I set the backup retention period to zero, but that didn't mean everything was automatically gone. To make sure nothing was left behind, I had to check AWS directly and make sure that the database and backups were completely removed so I wouldn't get charged for anything left running. The database cleanup integration test covers this by checking that no RDS instances, snapshots, or automated backups are left after deletion.
+
+Another thing Moto could not prove was whether my network security was actually working. It could check the security group rules I created, but it couldn't tell me if those rules were actually stopping any outside connections. This led me to check the real AWS environment to make sure the database wasn't exposed. The network reachability integration test covers this gap by checking that the applications can be accessed through the ALB while the database port cannot be reached from outside the VPC.
+
+The last thing Moto couldn't prove was that the TLS connection between the weather application and PostgreSQL was actually secure. It was able to check parts of the configuration, but it couldn't test the real encrypted connection or confirm that the database certificate was being verified correctly. Because of this, I needed check the connection using the actual AWS resources. A real database connection test with TLS and certificate verification enabled would cover this gap by making sure the application can securely connect to PostgreSQL. Even though the Python tests passed with Moto, I still needed to make sure the connection was secure in the real environment.
+
 ## Comparing the Python and bash versions of the same step
 
 When comparing the Python and Bash versions for creating the database and waiting for it to become available, I found that Bash was easier to understand just because I'm more familiar with AWS CLI commands. Python was a little more challenging because I had to understand how to use boto3 to create resources and check their status. But, Python was definitely easier to test because I could use pytest and moto to simulate the database creation without actually using AWS resources. Overall, I would say Bash was easier for me to understand and create, but Python was easier for testing. 
