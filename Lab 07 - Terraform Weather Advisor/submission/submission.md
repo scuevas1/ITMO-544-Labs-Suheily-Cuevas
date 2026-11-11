@@ -7,14 +7,14 @@
 ## 1. Terraform installation and AWS identity
 ![Terraform version and AWS identity](screenshots/terraform-version-ss.png)
 
-The -/+ symbol is the one to be careful about because if the resource has important data, it can end up being lost when it's destroyed.
-
 ## 2. Part A — First Terraform experiment
 
 ![Terraform init and plan](screenshots/partA-ss1.png)
 ![Terraform apply](screenshots/partA-ss2.png)
 ![Terraform Plan](screenshots/partA-ss3.png)
 ![Terraform plan](screenshots/partA-ss4.png)
+
+The -/+ symbol is the one to be careful about because if the resource has important data, it can end up being lost when it's destroyed.
 
 ## 3. Terraform formatting, validation, and deployment plan
 
@@ -39,12 +39,12 @@ The -/+ symbol is the one to be careful about because if the resource has import
 | Helper functions written | Multiple | 0 |
 | Retry or wait loops written | Several | 0 |
 
-Terraform made things easier because I didn't have to worry about creating resources in the right order of writing separate scripts to delete everything. It also saved me time because Terraform automatically checked for changed and handled updating resources instead of me having to do it manually.
+Terraform made things easier because I didn't have to worry about creating resources in the right order or writing separate scripts to delete everything. It also saved me time because Terraform automatically checked for changes and handled updating resources instead of me having to do it manually.
 
 ### Step 2: Terraform dependency graph
 ![Terraform dependency graph](screenshots/f-step2.png)
 
-If I removed the WEATHER_URL line from compute.tf, terraform wouldn't know to create the load balancer because the advisor launch template, so the order could change and the advisor wouldn't know where to get the weather information.
+If I removed the WEATHER_URL line from compute.tf, terraform wouldn't know to create the load balancer before the advisor launch template, so the order could change and the advisor wouldn't know where to get the weather information.
 
 ### Step 3: Repeat plan
 ![Terraform no changes](screenshots/f-step3.png)
@@ -67,7 +67,7 @@ In Lab07, it took one apply command after changing the cache setting, but in Lab
 ![Target health and drift repair](screenshots/f-step5-ss2.png)
 ![Missing advisor listener plan](screenshots/f-step5-ss3.png)
 
-In Lab06, the script would just check if the target group already existed and skip it, but terraform notices that I changed health check path to /nope and showed that it needed to be changed back to /.
+In Lab06, the script would just check if the target group already existed and skip it, but terraform noticed that I changed health check path to /nope and showed that it needed to be changed back to /.
 
 ## 7. Part F, Steps 6–7 — IAM and state
 
@@ -86,17 +86,17 @@ If I removed ignore_changes, the next terraform apply would replace my real Gemi
 ### Step 8: Invalid Gemini key test
 ![Fallback responses and Gemini error evidence](screenshots/f-step8.png)
 
-The problem is that users might think that everything is working fine even when Gemini isn't working, and if nobody checks the logs, the issue could go unnotices for a long time.
+The problem is that users might think that everything is working fine even when Gemini isn't working, and if nobody checks the logs, the issue could go unnoticed for a long time.
 
 ### Step 9: Lambda exercise
 
 #### 1. List every resource in compute.tf, iam.tf, network.tf and alb.tf that exists only because the advisor runs on an EC2 instance.
 
-The advisor's launch template, Auto Scaling Group, and IAM instance profile wouldn't be needed. The advisor's EC2 health checks and instance refresh would also be removed, and it's target group would need to be replaced.
+The advisor's launch template, Auto Scaling Group, and IAM instance profile wouldn't be needed. The advisor's EC2 health checks and instance refresh would also be removed, and its target group would need to be replaced.
 
 #### 2. List what would stay (the parameter, the policy, the listener, the load balancer, and so on)
 
-The load balancer, advisor listener, Gemini parameter, and IAM policy would stay. The weather tier would also stay the same, including it's EC2 setup, security group, and DynamoDB table.
+The load balancer, advisor listener, Gemini parameter, and IAM policy would stay. The weather tier would also stay the same, including its EC2 setup, security group, and DynamoDB table.
 
 #### 3. List what would be new (a function resource, a permission that lets the load balancer call it, and the work of changing the code to handle a Lambda event).
 
@@ -117,11 +117,17 @@ Lambda would handle running and scaling the advisor, while Terraform would still
 | Health check and grace period | The advisor wouldn't need these because it wouldn't run on EC2 anymore. | AWS Lambda |
 
 ## 9. Written answers and review questions
-See [REVIEW_ANSWERS.md](REVIEW_ANSWERS.md) for the Terraform/Lambda comparison and what Terraform did not simplify
+1. How Terraform is like AWS Lambda and where the comparison stops
+
+Terraform and AWS Lambda are similar because they both take care of things that I would normally have to do manually. Terraform figures out what resources need to be created and in what order, while Lambda handles running and scaling the application without me having to manage the servers. The biggest difference is that Terraform is used to set up and manage the infrastructure, while Lambda actually runs the code whenever it's triggered.
+
+2. What Terraform did not make easier
+
+Terraform didn't make the amount of code shorter since I still had to write a bunch of configuration files to get everything working. I also had to use the different Terraform commands and understand how the state file works. Even though setting everything up still took some effort, Terraform made it easier to keep track of changed, update resources, and clean everything up when I was finished.
 
 ## 10. Part F, Step 10 — Destroy and cleanup
 
-My total runtime from this lab was approximately 3 hours (7:00pm to 10:01pm). Based on the estimated cost of $0.07 per hour, my total cost was around $0.21. After finishing the lab, I ran terraform destroy, which successfully destroyed 15 resources. The reason it only shows 15 resources is because the first time I ran terraform destroy it cause my laptop to restart. So I had to run it again and I ended up running it a third time to verify everything was destroyed. 
+My total runtime from this lab was approximately 3 hours (7:00pm to 10:01pm). Based on the estimated cost of $0.07 per hour, my total cost was around $0.21. After finishing the lab, I ran terraform destroy, but my laptop restarted during the first attempt, so I had to run it again. The final destroy removed 15 resources, and I used the AWS verification commands to make sure nothing from Lab07 was left running.
 
 ![Destroy plan or output](screenshots/f-step10.png)
 ![Destroy completion or cleanup verification](screenshots/f-step10-ss2.png)
