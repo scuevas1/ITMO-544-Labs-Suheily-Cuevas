@@ -1,0 +1,38 @@
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "i-03b5ea913c11b1cac",
+                "Port": 3000
+            },
+            "HealthCheckPort": "3000",
+            "TargetHealth": {
+                "State": "healthy"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        }
+    ]
+}
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "i-0ec64e1d115a1bff3",
+                "Port": 3000
+            },
+            "HealthCheckPort": "3000",
+            "TargetHealth": {
+                "State": "healthy"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+
+> weather-app@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: valid US ZIP and non-US ZIP rejection
+ok 1 - valid US ZIP and non-US ZIP rejection
+  ---
+  duration_ms: 1.671813
+  type: 'test'
+  ...
+# Subtest: morning and night boundaries
+ok 2 - morning and night boundaries
+  ---
+  duration_ms: 0.193697
+  type: 'test'
+  ...
+# Subtest: rain threshold
+ok 3 - rain threshold
+  ---
+  duration_ms: 0.454323
+  type: 'test'
+  ...
+# Subtest: snow threshold
+ok 4 - snow threshold
+  ---
+  duration_ms: 1.400969
+  type: 'test'
+  ...
+# Subtest: Unix time period selection uses local timezone across DST
+ok 5 - Unix time period selection uses local timezone across DST
+  ---
+  duration_ms: 31.817403
+  type: 'test'
+  ...
+# Subtest: invalid calendar date and out-of-window date
+ok 6 - invalid calendar date and out-of-window date
+  ---
+  duration_ms: 0.886614
+  type: 'test'
+  ...
+# Subtest: missing measured data remains unavailable
+ok 7 - missing measured data remains unavailable
+  ---
+  duration_ms: 0.590396
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 597.155458

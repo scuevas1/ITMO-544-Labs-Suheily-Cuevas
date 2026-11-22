@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /cloud-computing-suheily/final_project1/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /cloud-computing-suheily/final_project1
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 10 items / 8 deselected / 2 selected
+
+tests/test_integration.py::test_health_checks PASSED                     [ 50%]
+tests/test_integration.py::test_bad_zip_never_reaches_external_api PASSED [100%]
+
+======================= 2 passed, 8 deselected in 0.66s ========================

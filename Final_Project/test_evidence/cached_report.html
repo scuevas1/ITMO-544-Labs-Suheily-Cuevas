@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Advisor</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Weather Advisor</h1>
+        <p>Check the weather and plan your day</p>
+    </header>
+
+    <main class="container">
+
+        <section class="form-card">
+
+            <h2>Your Weather Report</h2>
+
+            <p class="last-updated">
+                Report Viewed At:
+                <span id="lastUpdated"></span>
+            </p>
+
+            <p>
+                Enter your information below to get
+                the weather forecast and recommendations.
+            </p>
+
+            <form action="/report" method="POST">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="zip">ZIP Code</label>
+
+                        <input
+                            type="text"
+                            id="zip"
+                            name="zip"
+                            placeholder="Example: 60616"
+                            pattern="[0-9]{5}"
+                            maxlength="5"
+                            inputmode="numeric"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Select Date</label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="gender">
+                        Gender / Clothing Preference
+                    </label>
+
+                    <select
+                        id="gender"
+                        name="gender"
+                        required
+                    >
+                        <option value="neutral">
+                            Gender Neutral
+                        </option>
+
+                        <option value="menswear">
+                            Menswear
+                        </option>
+
+                        <option value="womenswear">
+                            Womenswear
+                        </option>
+                    </select>
+
+                    <small>
+                        This is only used to personalize
+                        your clothing recommendations.
+                    </small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+
+                    <small>
+                        Enter your email if you want
+                        to receive the weather report.
+                    </small>
+
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="emailConsent"
+                            name="emailConsent"
+                            value="yes"
+                            style="width: auto;"
+                        >
+                        I want to receive this weather
+                        report by email.
+                    </label>
+                    <small>
+                        Email delivery may require
+                        subscription confirmation.
+                    </small>
+                </div>
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Get Weather Report
+                </button>
+            </form>
+        </section>
+
+        <section class="form-card">
+
+            
+    <h2>Chicago, IL</h2>
+    <p>Forecast date: 2026-11-21</p>
+    <table border="1" cellpadding="8">
+    <tr><th>Weather information</th><th>Morning</th><th>Night</th></tr>
+    <tr><th>Temperature</th><td>46.4–63.6 °F (Open-Meteo)</td><td>55–60 °F (NWS)</td></tr><tr><th>Wind speed</th><td>7.7 mph (Open-Meteo)</td><td>10 mph (NWS)</td></tr><tr><th>Visibility</th><td>10.4 miles (Open-Meteo)</td><td>18.5 miles (Open-Meteo)</td></tr><tr><th>UV</th><td>2.5 UV index (Open-Meteo)</td><td>0 UV index (Open-Meteo)</td></tr><tr><th>Humidity</th><td>69.3 % (Open-Meteo)</td><td>58.2 % (NWS)</td></tr><tr><th>Rain</th><td>No (Open-Meteo / calculated)</td><td>No (Open-Meteo / calculated)</td></tr><tr><th>Snow</th><td>No (Open-Meteo / calculated)</td><td>No (Open-Meteo / calculated)</td></tr><tr><th>Suggested road conditions</th><td>Clear roads with excellent visibility for your commute.</td><td>Clear conditions with high visibility for safe driving.</td></tr><tr><th>Suggested dressing</th><td>Layering is recommended as temperatures rise from cool to mild.</td><td>A light jacket or sweater is appropriate for the mild evening air.</td></tr><tr><th>Suggested accessories</th><td>Sunglasses are helpful for the morning sun.</td><td>No special accessories needed.</td></tr>
+  </table>
+    <p>Advice source: gemini</p>
+    <p>Weather facts: National Weather Service and Open-Meteo. Each reported metric retains its source in the JSON report.</p>
+    
+    <form method="POST" action="/email">
+    <input type="hidden" name="zip" value="60616">
+    <input type="hidden" name="date" value="2026-11-21">
+    <input type="hidden" name="gender" value="womenswear">
+    <input type="hidden" name="email" value="test@example.com">
+    <p><label><input type="checkbox" name="consent" value="yes" required>
+      I request that this report be emailed to the address I entered.
+    </label></p>
+    <button type="submit">Email My Report</button>
+  </form>
+  
+
+            <h2>About Weather Advisor</h2>
+
+            <p>
+                Weather Advisor provides morning and
+                night forecasts for your selected
+                location and date.
+            </p>
+
+            <p>
+                The report includes temperature,
+                wind speed, visibility, UV index,
+                humidity, rain, and snow.
+            </p>
+
+            <p>
+                It also uses AI to suggest road
+                conditions, clothing, and accessories
+                based on the weather.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        const dateInput = document.getElementById("date");
+
+        function localDateString(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1)
+                .padStart(2, "0");
+            const day = String(date.getDate())
+                .padStart(2, "0");
+
+            return year + "-" + month + "-" + day;
+        }
+
+        const today = new Date();
+        const lastDay = new Date(today);
+        lastDay.setDate(today.getDate() + 6);
+
+        dateInput.min = localDateString(today);
+        dateInput.max = localDateString(lastDay);
+        dateInput.value = localDateString(today);
+    </script>
+    <script>
+        const lastUpdated = document.getElementById("lastUpdated");
+
+        if (lastUpdated) {
+            lastUpdated.textContent = new Date().toLocaleString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true
+             });
+         }
+    </script>
+</body>
+</html>

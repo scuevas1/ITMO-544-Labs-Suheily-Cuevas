@@ -1,0 +1,44 @@
+
+> advisor-app@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: server validation rejects untrusted user inputs
+ok 1 - server validation rejects untrusted user inputs
+  ---
+  duration_ms: 2.427064
+  type: 'test'
+  ...
+# Subtest: Gemini answer validation accepts structured advice only
+ok 2 - Gemini answer validation accepts structured advice only
+  ---
+  duration_ms: 0.442862
+  type: 'test'
+  ...
+# Subtest: escaping removes active markup
+ok 3 - escaping removes active markup
+  ---
+  duration_ms: 0.277421
+  type: 'test'
+  ...
+# Subtest: fallback gives three advice outputs per period without an LLM
+ok 4 - fallback gives three advice outputs per period without an LLM
+  ---
+  duration_ms: 0.396273
+  type: 'test'
+  ...
+# Subtest: date boundary uses selected timezone
+ok 5 - date boundary uses selected timezone
+  ---
+  duration_ms: 19.787965
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 562.635275

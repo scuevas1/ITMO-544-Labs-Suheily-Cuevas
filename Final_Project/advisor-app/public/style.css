@@ -1,0 +1,168 @@
+
+/* Weather Advisor - Simple Navy Blue Theme */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f8;
+    color: #243247;
+}
+
+header {
+    background-color: #162d50;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+header p {
+    margin: 0;
+    color: #d8e2f0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.form-card,
+.weather-card,
+.advice-card {
+    background-color: white;
+    border: 1px solid #dde3eb;
+    border-radius: 8px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #162d50;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+    color: #243247;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #bac7d8;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: white;
+    color: #243247;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2e5077;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+small,
+.help-text {
+    display: block;
+    color: #66758a;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+button,
+.submit-btn {
+    background-color: #162d50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover,
+.submit-btn:hover {
+    background-color: #2e5077;
+}
+
+.weather-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.weather-card h3 {
+    border-bottom: 2px solid #e4eaf2;
+    padding-bottom: 10px;
+}
+
+.weather-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid #edf0f5;
+    gap: 15px;
+}
+
+.advice-card {
+    border-left: 4px solid #2e5077;
+}
+
+.error {
+    color: #9b2530;
+    background: #fff1f1;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.success {
+    color: #255d40;
+    background: #edf8f0;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #66758a;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .form-row,
+    .weather-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        margin: 15px auto;
+        padding: 0 12px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+}

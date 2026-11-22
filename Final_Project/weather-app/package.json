@@ -1,0 +1,13 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {"start": "node app.js", "test": "node --test test.js"},
+  "dependencies": {
+    "express": "^4.21.2",
+    "@aws-sdk/client-dynamodb": "^3.600.0",
+    "@aws-sdk/lib-dynamodb": "^3.600.0"
+  }
+}
+
